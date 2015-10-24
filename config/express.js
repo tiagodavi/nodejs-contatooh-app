@@ -1,4 +1,5 @@
 var express = require('express');
+var load = require('express-load');
 var home = require('../app/routes/home');
 
 module.exports = function() {
@@ -10,7 +11,10 @@ module.exports = function() {
 
 	app.use(express.static('./public'));
 	
-	home(app);
+	load('models', {cwd: 'app'})
+		.then('controllers')
+		.then('routes')
+		.into(app);
 	
 	return app;
 }; 
