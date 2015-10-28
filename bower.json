@@ -1,0 +1,19 @@
+{
+  "name": "contatooh",
+  "version": "0.0.0",
+  "homepage": "https://github.com/tiagodavi/nodejs-contatooh-app",
+  "authors": [
+    "Tiago <tiago.asp.net@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.3"
+  }
+}
