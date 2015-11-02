@@ -4,4 +4,5 @@ angular.module('contatooh').controller('ContactsController',
 		$scope.increment = function(){
 			$scope.total++;
 		};
-});
+	}
+);

@@ -4,12 +4,13 @@
 	<meta charset="UTF-8">
 	<title>Welcome to Contatooh</title>
 </head>
-<body ng-controller="ContactsController">
-	<h1>Welcome to Contatooh</h1>
-	<button ng-click="increment()">New</button>
-	<p>Registered contacts: {{total}}</p>
+<body>
+	<div ng-view></div>
+	
 	<script src="vendor/angular/angular.js"></script>
+	<script src="vendor/angular-route/angular-route.js"></script>
 	<script src="js/modules/Main.js"></script>
 	<script src="js/controllers/ContactsController.js"></script>
+	<script src="js/controllers/ContactController.js"></script>
 </body>
 </html>
