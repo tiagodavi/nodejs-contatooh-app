@@ -1,15 +1,25 @@
 angular.module('contatooh').controller('ContactsController', 
-	function($scope, $http){		
+	function($scope, $resource){		
 		$scope.filter 	 = '';
-		$scope.contacts  = [];		
-		
-		$http.get('/contatos')
-		.success(function(data){
-			$scope.contacts = data;
-		})
-		.error(function(statusText){
-			console.log("Contacts not found");
-			console.log(statusText);
-		});
+		$scope.contacts  = [];	
+
+		var Contact = $resource('/contatos');
+		var fetchContatcs = function(){
+			Contact.query(
+				function(contacts){
+					$scope.contacts = contacts;
+				},
+				function(error){
+					console.log("Contacts not found");
+					console.log(error);
+				}
+			);
+		};
+
+		$scope.init = function(){
+			fetchContatcs();
+		};
+
+		$scope.init();	
 	}
 );
