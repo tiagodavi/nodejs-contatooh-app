@@ -3,14 +3,24 @@ angular.module('contatooh').controller('ContactsController',
 		$scope.filter 	 = '';
 		$scope.contacts  = [];	
 
-		var Contact = $resource('/contatos');
+		var Contact = $resource('/contatos/:id');
 		var fetchContatcs = function(){
 			Contact.query(
-				function(contacts){
+				function(contacts){				
 					$scope.contacts = contacts;
 				},
 				function(error){
 					console.log("Contacts not found");
+					console.log(error);
+				}
+			);
+		};
+
+		$scope.remove = function(contact){
+			Contact.delete({id: contact._id},
+				fetchContatcs,
+				function(error){
+					console.log('Error in removing the contact');
 					console.log(error);
 				}
 			);
