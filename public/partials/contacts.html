@@ -4,9 +4,9 @@
 	</h1>
 </div>
 <p ng-show="message.text">{{message.text}}</p>
-<button class="btn btn-primary" ng-click="increment()">
-	New
-</button>
+<a ng-href="#/contato" class="btn btn-primary">
+	New Contact
+</a>
 <input ng-model="filter" type="search" placeholder="Part of name">
 <p ng-show="contacts.length">Registered contacts: {{contacts.length}}</p>
 <p class="text-info" ng-hide="contacts.length">There aren't any contacts registered</p>

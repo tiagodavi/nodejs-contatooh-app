@@ -8,5 +8,9 @@ angular.module('contatooh', ['ngRoute', 'ngResource'])
 		templateUrl: 'partials/contact.html',
 		controller: 'ContactController'
 	});
+	$routeProvider.when('/contato', {
+		templateUrl: 'partials/contact.html',
+		controller: 'ContactController'
+	});
 	$routeProvider.otherwise({redirectTo: '/contatos'});
 });

@@ -2,7 +2,7 @@
 <p ng-show="message.text">
 	{{message.text}}
 </p>
-<form>
+<form ng-submit="save()">
 	<div class="form-group">
 		<label for="name">Full name</label>
 		<input type="text" class="form-control" 

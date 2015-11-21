@@ -1,10 +1,12 @@
 angular.module('contatooh').controller('ContactsController', 
 	function($scope, $resource){		
+		
+		var Contact = $resource('/contatos/:id');
+
 		$scope.filter 	 = '';
 		$scope.contacts  = [];	
 		$scope.message 	 = {text: ''}
-
-		var Contact = $resource('/contatos/:id');
+		
 		var Message = {			
 			set: function(text){
 				$scope.message.text = text;
