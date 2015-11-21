@@ -1,1 +1,27 @@
-<h1>Contact</h1>
+<h1 class="text-center">Contact</h1>
+<p ng-show="message.text">
+	{{message.text}}
+</p>
+<form>
+	<div class="form-group">
+		<label for="name">Full name</label>
+		<input type="text" class="form-control" 
+		id="name" name="name" 
+		required ng-model="contact.name">
+	</div>
+	<div class="form-group">
+		<label for="email">Email</label>
+		<div class="input-group">
+			<span class="input-group-addon">@</span>
+			<input type="email" class="form-control"
+			id="email" placeholder="email@example.com" 
+			name="email" ng-model="contact.email" required>					
+		</div>
+	</div>
+	<div>
+		<button type="submit" class="btn btn-primary">
+			Save
+		</button>
+		<a href="#/" class="btn btn-default">Back</a>
+	</div>
+</form>

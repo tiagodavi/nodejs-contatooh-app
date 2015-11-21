@@ -19,7 +19,7 @@
 		</tr>
 		<tr ng-repeat="contact in contacts | filter: filter">
 			<td>
-				<a>{{ contact.name }}</a>
+				<a ng-href="#/contato/{{contact._id}}">{{ contact.name }}</a>
 			</td>
 			<td>{{ contact.email }}</td>
 			<td class="text-center">
