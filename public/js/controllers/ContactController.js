@@ -1,20 +1,18 @@
 angular.module('contatooh').controller('ContactController', 
-	function($scope, $routeParams, $resource){
-
-		var Contact = $resource('contatos/:id');
+	function($scope, $routeParams, Contact, Message){
 
 		$scope.contact = new Contact();
 		$scope.message = {text: ''};
+		Message.setScope($scope.message);
 
 		$scope.save = function(){
 			$scope.contact.$save()
 			.then(function(){		
-				$scope.contact = new Contact();		
-				$scope.message = {text: 'Contact has been saved successfully'};
+				$scope.contact = new Contact();	
+				Message.set('Contact has been saved successfully');
 			})
-			.catch(function(error){
-				$scope.message = {text: 'It could not save the contact'};
-				console.log(error);
+			.catch(function(error){				
+				Message.set('It could not save the contact', error);
 			});			
 		};	
 			
@@ -24,10 +22,7 @@ angular.module('contatooh').controller('ContactController',
 					$scope.contact = contact;
 				},
 				function(error){
-					$scope.message = {
-						text: 'Contact not found'
-					};
-					console.log(error);
+					Message.set('Contact not found', error);				
 				}
 			);
 		}		

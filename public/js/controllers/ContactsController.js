@@ -1,20 +1,11 @@
 angular.module('contatooh').controller('ContactsController', 
-	function($scope, $resource){		
+	function($scope, Contact, Message){		
 		
-		var Contact = $resource('/contatos/:id');
-
 		$scope.filter 	 = '';
 		$scope.contacts  = [];	
-		$scope.message 	 = {text: ''}
-		
-		var Message = {			
-			set: function(text){
-				$scope.message.text = text;
-			},
-			clean: function(){
-				$scope.message.text = '';
-			}
-		};
+		$scope.message 	 = {text: ''};
+		Message.setScope($scope.message);
+				
 		var fetchContatcs = function(){
 			Contact.query(
 				function(contacts){				
@@ -22,8 +13,7 @@ angular.module('contatooh').controller('ContactsController',
 					Message.clean();
 				},
 				function(error){
-					Message.set('Contacts not found');
-					console.log(error);												
+					Message.set('Contacts not found', error);										
 				}
 			);
 		};
@@ -32,8 +22,7 @@ angular.module('contatooh').controller('ContactsController',
 			Contact.delete({id: contact._id},
 				fetchContatcs,
 				function(error){
-					Message.set('Error in removing the contact');
-					console.log(error);
+					Message.set('Error in removing the contact', error);
 				}
 			);
 		};
