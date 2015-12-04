@@ -25,6 +25,12 @@ angular.module('contatooh').controller('ContactController',
 					Message.set('Contact not found', error);				
 				}
 			);
-		}		
+		}	
+
+		Contact.query(
+			function(contacts){ 
+				$scope.contacts = contacts;				
+			}
+		);
 	}
 );

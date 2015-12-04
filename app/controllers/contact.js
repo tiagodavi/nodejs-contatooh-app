@@ -3,7 +3,9 @@ module.exports = app => {
 	var controller 	= {}
 		
 	controller.findAll = (req, res) => {
-		Model.find().exec()
+		Model.find()
+		.populate('emergency')		
+		.exec()
 		.then(
 			contacts => res.json(contacts),
 			error => { 
@@ -40,8 +42,9 @@ module.exports = app => {
 		)		
 	}
 	controller.save = (req, res) =>  {
-		var inputContact = req.body
-
+		var inputContact   = req.body
+		req.body.emergency = req.body.emergency || null
+		
 		if(inputContact._id){
 			Model.findByIdAndUpdate(inputContact._id, inputContact)
 			.exec()
