@@ -1,11 +1,13 @@
-module.exports = function(app) {
-	var controller = app.controllers.contact;
+var isAuthenticated = require('../../config/auth');
+
+module.exports = app => {
+	var controller = app.controllers.contact
 
 	app.route('/contacts')
-	   .get(controller.findAll)	   	 
-	   .post(controller.save);
+	   .get(isAuthenticated, controller.findAll)	   	 
+	   .post(isAuthenticated, controller.save)
 
 	app.route('/contacts/:id')
-	   .get(controller.findOne)
-	   .delete(controller.remove);
-};
+	   .get(isAuthenticated, controller.findOne)
+	   .delete(isAuthenticated, controller.remove)
+}
