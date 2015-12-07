@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="contatooh">
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome to Contatooh</title>
+	<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap-theme.css">
+</head>
+<body class="container">
+
+	<div class="text-right">
+		<p>
+			Signed in as: 
+			<span id="user-name">
+				<%=userName%>
+			<span>
+			<a href="/logout">Logout</a>
+		</p>
+	</div>
+
+	<div ng-view></div>
+
+	<script src="vendor/angular/angular.js"></script>
+	<script src="vendor/angular-route/angular-route.js"></script>
+	<script src="vendor/angular-resource/angular-resource.js"></script>
+	<script src="js/modules/Main.js"></script>
+	<script src="js/services/ContactService.js"></script>
+	<script src="js/services/MessageService.js"></script>
+	<script src="js/controllers/ContactsController.js"></script>
+	<script src="js/controllers/ContactController.js"></script>
+</body>
+</html>
