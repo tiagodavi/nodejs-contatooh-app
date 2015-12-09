@@ -1,3 +1,5 @@
+var sanitize = require('mongo-sanitize')
+
 module.exports = app => {
 	var Model 		= app.models.contact
 	var controller 	= {}
@@ -30,7 +32,7 @@ module.exports = app => {
 		)		
 	}
 	controller.remove = (req, res) => {
-		var _id = req.params.id
+		var _id = sanitize(req.params.id)
 
 		Model.remove({"_id": _id}).exec()
 		.then(
@@ -42,11 +44,15 @@ module.exports = app => {
 		)		
 	}
 	controller.save = (req, res) =>  {
-		var inputContact   = req.body
-		req.body.emergency = req.body.emergency || null
-		
+
+		var input = {
+			"name": req.body.name,
+			"email": req.body.email,
+			"emergency": req.body.emergency || null
+		}
+			
 		if(inputContact._id){
-			Model.findByIdAndUpdate(inputContact._id, inputContact)
+			Model.findByIdAndUpdate(inputContact._id, input)
 			.exec()
 			.then(
 				contact => res.json(contact),
@@ -57,7 +63,7 @@ module.exports = app => {
 			)
 		}
 		else{
-			Model.create(inputContact)
+			Model.create(input)
 			.then(
 				contact => res.status(201).json(contact),
 				error => {
