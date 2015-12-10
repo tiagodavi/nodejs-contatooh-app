@@ -1,2 +1,5 @@
 /node_modules/*
 /public/vendor/*
+/config/token.js
+/dist/config/token.js
+/.tmp/*
